@@ -1,0 +1,219 @@
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+body {
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+h1 {
+  font-size: 1.8rem;
+}
+h2 {
+  font-size: 1.4rem;
+}
+/*
+  9. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* App Styling starts here */
+:root {
+  --primary-btn: #596d48;
+  --primary-border: #e5e7eb;
+  --secondary-background: #f9f9f9;
+}
+@font-face {
+  font-family: "Norse-Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./assets/Norse-Bold.otf") format("opentype");
+}
+input {
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid var(--primary-border);
+}
+input:focus {
+  border: 2px solid blue;
+}
+input:invalid {
+  border: 2px solid red;
+}
+label {
+  text-transform: capitalize;
+}
+body {
+  max-width: 100vw;
+}
+.container {
+  display: grid;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+}
+.img-section {
+  height: 100vh; /* Full viewport height for the section */
+  position: relative;
+}
+
+.img-section img {
+  object-fit: cover;
+}
+.logo-container {
+  position: absolute;
+  background-color: black;
+  opacity: 0.5;
+  width: 100%;
+  height: 8rem;
+  color: white;
+  top: 20%;
+  padding: 1rem;
+}
+.logo-container img {
+  height: 100%;
+  margin: 0 auto;
+}
+.logo-container::after {
+  content: "ODIN";
+  color: white;
+  font-family: "Norse-Bold", serif;
+  position: absolute;
+  top: 20%;
+  left: 55%;
+  font-size: 3.5rem;
+}
+
+#logo-author {
+  position: absolute;
+  top: 96%;
+  left: 50%;
+  transform: translateX(-50%); /* Center it horizontally */
+  color: white;
+}
+
+.header,
+.cta-section {
+  background-color: var(--secondary-background);
+  height: 33.3%;
+  padding: 1rem 1.5rem;
+}
+.header {
+  padding-top: 4rem;
+  font-size: 1.5rem;
+}
+
+label {
+  display: block;
+}
+.form {
+  padding: 1rem 1.5rem;
+  height: 33.3%;
+}
+
+.form-container {
+  display: flex;
+  gap: 3rem;
+}
+.column {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-row-gap: 5px;
+}
+.cta-section button {
+  border: unset;
+  background-color: var(--primary-btn);
+  padding: 0.5em 2em;
+  color: white;
+  border-radius: 5px;
+  width: 200px;
+  margin-bottom: 2rem;
+}
+.login {
+  color: var(--primary-btn);
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    height: 100vh;
+    font-size: 1rem;
+    grid-template-columns: 1fr; /* Stack the form full width */
+  }
+  .img-section {
+    display: none;
+  }
+  .form-section {
+    width: 100%;
+  }
+  .header,
+  .cta-section,
+  .form {
+    width: 100%;
+    height: max-content;
+  }
+  .header {
+    padding-top: 1.5rem;
+  }
+  .form-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
